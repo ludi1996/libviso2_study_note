@@ -56,21 +56,28 @@ int main (int argc, char** argv) {
 bool VisualOdometryStereo::process (uint8_t *I1,uint8_t *I2,int32_t* dims,bool replace) {
   
   // push back images
+  // matcher->pushBack() 函数将前一时刻和当前时刻的左右两张图片储存到缓存变量中
+  // 并且对这四张图片进行了特征提取，提取到的特征点讲用于特征匹配
   matcher->pushBack(I1,I2,dims,replace);
-  
   // bootstrap motion estimate if invalid
+  // Tr_valid 是一个flag变量，根据其状态进行加速特征匹配或者普通特征匹配
   if (!Tr_valid) {
     matcher->matchFeatures(2);
     matcher->bucketFeatures(param.bucket.max_features,param.bucket.bucket_width,param.bucket.bucket_height);
     p_matched = matcher->getMatches();
     updateMotion();
   }
-  
   // match features and update motion
-  if (Tr_valid) matcher->matchFeatures(2,&Tr_delta);
-  else          matcher->matchFeatures(2);
+  // 进行特征匹配和运动更新
+  // matcher->matchFeatures（）函数对4张图片进行特征匹配
+  if (Tr_valid) matcher->matchFeatures(2,&Tr_delta);	// 利用前一时刻的位姿变换，加速特征匹配
+  else          matcher->matchFeatures(2);		// 直接进行特征匹配
+  // matcher->bucketFeatures() 函数对图像中特征点进行Bucketing分割，减少特征点数量
   matcher->bucketFeatures(param.bucket.max_features,param.bucket.bucket_width,param.bucket.bucket_height);
+  // 更新匹配到的点
   p_matched = matcher->getMatches();
+  // 得到匹配好的点后，就可以进行运动估计了
+  // 运动估计的部分被包含在了updateMotion() 函数中
   return updateMotion();
 }
 ```
