@@ -145,13 +145,13 @@ vector<double> VisualOdometryStereo::estimateMotion (vector<Matcher::p_match> p_
 
   Laplace算子作为一种优秀的边缘检测算子，在边缘检测中得到了广泛的应用。该方法通过对图像求图像的二阶倒数的零交叉点来实现边缘的检测，公式表示如下：
 
-  ![](http://latex.codecogs.com/gif.latex?\LARGE \bigtriangledown^2f=\frac{\partial^2f}{\partial x^2}+\frac{\partial^2f}{\partial y^2})
+  ![](http://latex.codecogs.com/gif.latex?\bigtriangledown^2f=\frac{\partial^2f}{\partial x^2}+\frac{\partial^2f}{\partial y^2})
 
   由于Laplace算子是通过对图像进行微分操作实现边缘检测的，所以对离散点和噪声比较敏感。于是，首先对图像进行高斯卷积滤波进行降噪处理，高斯函数的表达式如下：
 
   
 
-  ![](http://latex.codecogs.com/gif.latex?\LARGEG_\sigma(x,y)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{x^2+y^2}{2\sigma^2}})
+  ![](http://latex.codecogs.com/gif.latex?G_\sigma(x,y)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{x^2+y^2}{2\sigma^2}})
 
   再采用Laplace算子进行边缘检测，就可以提高算子对噪声和离散点的鲁棒性，如此，拉普拉斯高斯算子Log（Laplace of Gaussian）就诞生了。
 
