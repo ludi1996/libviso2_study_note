@@ -151,7 +151,7 @@ vector<double> VisualOdometryStereo::estimateMotion (vector<Matcher::p_match> p_
 
   
 
-  ![](http://latex.codecogs.com/gif.latex?\LARGE G_\sigma(x,y)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{x^2+y^2}{2\sigma^2}})
+  ![](http://latex.codecogs.com/gif.latex?\LARGEG_\sigma(x,y)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{x^2+y^2}{2\sigma^2}})
 
   再采用Laplace算子进行边缘检测，就可以提高算子对噪声和离散点的鲁棒性，如此，拉普拉斯高斯算子Log（Laplace of Gaussian）就诞生了。
 
