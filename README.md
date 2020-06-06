@@ -137,7 +137,68 @@ vector<double> VisualOdometryStereo::estimateMotion (vector<Matcher::p_match> p_
 
 # 原理
 
-// TODO
+## 特征匹配部分
+
+### 特征提取
+
++ [高斯拉普拉斯算子](http://homepages.inf.ed.ac.uk/rbf/HIPR2/log.htm)
+
+  Laplace算子作为一种优秀的边缘检测算子，在边缘检测中得到了广泛的应用。该方法通过对图像求图像的二阶倒数的零交叉点来实现边缘的检测，公式表示如下：
+
+  ![](http://latex.codecogs.com/gif.latex?\LARGE \bigtriangledown^2f=\frac{\partial^2f}{\partial x^2}+\frac{\partial^2f}{\partial y^2})
+
+  由于Laplace算子是通过对图像进行微分操作实现边缘检测的，所以对离散点和噪声比较敏感。于是，首先对图像进行高斯卷积滤波进行降噪处理，高斯函数的表达式如下：
+
+  
+
+  ![](http://latex.codecogs.com/gif.latex?\LARGE G_\sigma(x,y)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{x^2+y^2}{2\sigma^2}})
+
+  再采用Laplace算子进行边缘检测，就可以提高算子对噪声和离散点的鲁棒性，如此，拉普拉斯高斯算子Log（Laplace of Gaussian）就诞生了。
+
++ Sobel 滤波
+
+libviso2 采用 Blob/Corner Detector 两种特征模板来提取特征。
+
+<img src="../../Desktop/slamjieshao/jj/image-20200606225855187.png" alt="image-20200606225855187" style="zoom: 67%;" />
+
+如图所示，Blob Musk 是一个高斯拉普拉斯算子。
+
+### 环形匹配
+
+
+
+### 快速匹配
+
+
+
+## 运动估计部分
+
+### 特征 Bucketing
+
+
+
+### 3D Points Calcuation
+
+
+
+### Projection Model
+
+
+
+### Minimize Reprojection Errors
+
+
+
+### RANSAC
+
+
+
+### Gauss-Newton optimization
+
+
+
+
+
 
 # 关键部分代码详细注释和讲解
 
