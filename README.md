@@ -1,4 +1,4 @@
-# LIBVISO2
+# LIBVISO2 学习笔记
 
 **[LIBVISO2 (Library for Visual Odometry 2)](http://www.cvlibs.net/software/libviso/)** 是AVG(Autonomous Vision Group)小组的开源项目。
 
@@ -186,7 +186,7 @@ vector<double> VisualOdometryStereo::estimateMotion (vector<Matcher::p_match> p_
 
 + Blob/Corner Detector
 
-  <img src="img/image-20200606225855187.png" alt="image-20200606225855187" style="zoom: 67%;" />
+  <img src="img/image-20200606225855187.png" alt="image-20200606225855187" style="zoom: 50%;" />
   
   libviso2 采用 Blob/Corner Detector 两种特征模板来提取特征。如图所示，Blob Musk 是一个高斯拉普拉斯算子，它和 Corner Musk 分别检测边缘点和角点。采用非极大值抑制和非极小值抑制的方法保留局部极大值和极小值作为特征点。
   
@@ -250,15 +250,15 @@ vector<double> VisualOdometryStereo::estimateMotion (vector<Matcher::p_match> p_
 
 根据已匹配特征点的视差，计算出此点在三维空间内的坐标
 
-+ 视差
++ disparity
 
   ![](img/w4.gif)
 
-+ 双目相机基线
++ Stereo Baseline
 
   ![](img/w3.gif)
 
-+ 投影到3d
++ 3d points
 
   ![](img/w2.gif)
 
@@ -280,7 +280,7 @@ vector<double> VisualOdometryStereo::estimateMotion (vector<Matcher::p_match> p_
 
 ​	[RANSAC算法](http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/FISHER/RANSAC/)非常适合用来拟合存在许多离群点的数据集。由于匹配算法本身存在的误差，运动物体的干扰，VO算法会采用RANSAC算法去除外点。
 
-<img src="img/image-20200608051237646.png" alt="image-20200608051237646" style="zoom: 50%;" />
+<img src="img/image-20200608051237646.png" alt="image-20200608051237646" style="zoom: 40%;" />
 
 RANSAC算法流程很简单，下面介绍一下在libviso2运动估计中使用的RANSAC算法：
 
