@@ -257,6 +257,8 @@ libviso2 采用 Blob/Corner Detector 两种特征模板来提取特征。如图�
 
 
 
+![img](https://latex.codecogs.com/gif.latex?%5Clarge%20%5Cbegin%7Bbmatrix%7D%20u_c%20%5C%5C%20v_c%20%5C%5C%201%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20f%20%26%200%20%26%20c_u%20%5C%5C%200%20%26%20f%20%26%20c_v%20%5C%5C%200%20%26%200%20%26%201%20%5Cend%7Bbmatrix%7D%20%5Cbegin%7Bbmatrix%7D%20%28%5Cmathbf%7BR%7D%28r%29%20%5Cquad%20%5Cmathbf%7Bt%7D%29%20%5Cleft%28%20%5Cbegin%7Barray%7D%7Bcccc%7D%20X_p%20%5C%5C%20Y_p%20%5C%5C%20Z_p%20%5Cend%7Barray%7D%20%5Cright%29%20-%20%5Cleft%28%20%5Cbegin%7Barray%7D%7Bcccc%7D%20s%20%5C%5C%200%20%5C%5C%200%20%5Cend%7Barray%7D%20%5Cright%29%20%5Cend%7Bbmatrix%7D)
+
 
 
 ![](http://latex.codecogs.com/gif.latex?
