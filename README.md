@@ -12,11 +12,7 @@
 
 <img src="img/tree.png" alt="tree" style="zoom:75%;" />
 
-下载一下test用到的数据库，再编译运行一下，可以看到 Current pose 被连续不断的打印到屏幕上。
-
-[pic] //TODO
-
-别慌，咱们一起来看看这个代码的运行流程，先从main() 函数所在的 demo.cpp 开始。
+下载一下test用到的数据库，再编译运行一下，可以看到 Current pose 被连续不断的打印到屏幕上。看起来很复杂是吗？别慌，让我们一起来看看这个代码的运行流程，先从main() 函数所在的 demo.cpp 开始。
 
 + demo.cpp
 
