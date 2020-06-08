@@ -6,7 +6,7 @@
 
 本文将详细介绍 libviso2 双目视觉里程计部分的实现原理和运动估计部分代码讲解。
 
-# 初识代码
+# 代码结构
 
 打开工程，在/src下面可以看见libviso2的C++源代码，密密麻麻一大堆头文件和源文件。
 
@@ -127,13 +127,7 @@ vector<double> VisualOdometryStereo::estimateMotion (vector<Matcher::p_match> p_
   return();			// 136-157行，delete临时变量，返回
 ```
 
-
-
-
-
-
-
-
+estimateMotion() 函数中，先将前一时刻的特征点投影到三维空间中。然后开始RANSAC循环，RANSAC循环中嵌套了一个while循环，在while循环中updateParameters()函数实现了高斯牛顿法，通过最小化重投影误差求解R和t。就这样，estimateMotion() 函数使用了RANSAC算法和高斯牛顿法实现了运动估计。
 
 # 实现原理
 
@@ -294,27 +288,31 @@ RANSAC算法流程很简单，下面介绍一下在libviso2运动估计中使用
 
 ### Gauss-Newton optimization
 
-- errors vector
+高斯牛顿法是常用的数值优化算法，该法使用泰勒级数展开式去近似地代替非线性回归模型，用雅可比矩阵经过运算近似代替海塞矩阵，迭代优化解决非线性最小二乘问题。在libviso2中应用高斯牛顿法的最小化问题如下：
+
++ Least squares problem
+
+  ![E](img/e7.gif)
+
++ Errors vector
 
   ![e6](img/e6.gif)
 
-- Optimization parameters vector
++ Optimization parameters vector
 
   ![](img/e4.gif)
 
-- Jocobians Matrix
++ Jocobians Matrix
 
   ![](img/e3.gif)
 
-- Parameter iteration
++ Parameter iteration
 
   ![](img/e2.gif)
 
 ### Jacobian Matrix Compute
 
+代码实现了雅可比矩阵的计算。
+
 ![e1](img/e1.gif)
 
-
-# 代码详解
-
-// TODO
